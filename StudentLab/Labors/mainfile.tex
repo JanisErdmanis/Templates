@@ -1,0 +1,70 @@
+%%% Research Diary - Entry
+%%% Template by Mikhail Klassen, April 2013
+%%% 
+\documentclass[12pt,letterpaper]{article}
+
+\newcommand{\workingDate}{\textsc{2014 $|$ Novembris}}
+\newcommand{\userName}{Jānis Erdmanis}
+\newcommand{\institution}{Latvijas Universitāte}
+\usepackage{researchdiary}
+\usepackage{amsmath}
+% To add your univeristy logo to the upper right, āimply
+% upload a file named "logo.png" using the files menu above.
+
+\usepackage{pythontex}  
+\pyc{from macros_ptex import *}
+%\pyc{from macros_ptex import latex_plot}
+\pyc{import mymodule as m}
+%\pyc{from mymodule import par}
+\newcommand{\pythonfigureo}[1]{\pyc{latex_plot('#1')}}
+\newcommand{\pythonfigure}[1]{\py{pythonfig('#1')}}
+\newcommand{\pythontable}[1]{\py{pythontable('#1')}}
+
+\usepackage{minted}
+
+% -------- For Gnumerics ------------
+
+\def\inputGnumericTable{} 
+\usepackage{ucs}                                              %%
+%\usepackage[utf8x]{inputenc}                                  %%
+%\usepackage[T2A]{fontenc}    % if cyrillic is used            %%
+\usepackage{color}                                            %%
+\usepackage{array}                                            %%
+\usepackage{longtable}                                        %%
+\usepackage{calc}                                             %%
+\usepackage{multirow}                                         %%
+\usepackage{hhline}                                           %%
+\usepackage{ifthen}                                           %%
+%  optionally (for landscape tables embedded in another document): %%
+\usepackage{lscape} 
+
+
+% For scalling tables
+%\usepackage{graphics}
+%\resizebox{\columnwidth}{!}{}
+
+\usepackage{placeins}
+
+\begin{document}
+%\univlogo
+
+%\title{Research Diary - Example Entry}
+
+{\Huge Vidējoto ātrumu un pulsāciju sadalījumi turbulentās plūsmās}\\[5mm]
+
+%\textit{N.B.: The following is a sample entry from Mikhail Klassen's research diary. It is intended to be illustrative of how WriteLaTeX can be used the keep track of your research progress. Some names have been removed from this document for privacy.}
+
+\section*{Teorētiskais pamatojums}
+
+\section*{Mērijumi un apstrāde}
+
+\pagebreak
+\section*{Secinājumi}
+
+
+\pagebreak
+\section*{Pielikums}
+
+	\inputminted[linenos,stepnumber=5,fontsize=\scriptsize]{python}{mymodule.py}
+
+\end{document}

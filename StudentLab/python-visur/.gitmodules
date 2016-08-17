@@ -1,0 +1,9 @@
+[submodule "scientific-python-lectures"]
+	path = scientific-python-lectures
+	url = https://github.com/jrjohansson/scientific-python-lectures.git
+[submodule "Github/MatchedFiltering"]
+	path = Github/MatchedFiltering
+	url = https://github.com/MOBle/MatchedFiltering.git
+[submodule "Github/crosscompute-tutorials"]
+	path = Github/crosscompute-tutorials
+	url = https://github.com/invisibleroads/crosscompute-tutorials.git

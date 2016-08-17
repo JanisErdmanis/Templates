@@ -1,0 +1,78 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage{build/sagatave}
+
+\id{je11011}
+\author{Jānis Erdmanis}
+\kurss{Fizikas Bakalaura 2. kurss}
+\numurs{9}
+\title{Elektrona īpatnējais lādiņš}
+
+
+\newcommand{\plot}[2]{
+	\begin{figure}[!ht]
+		\caption{#2}
+		\center
+		\includegraphics[width=0.8\textwidth]{#1}
+	\end{figure}
+}
+
+
+\newcommand{\subplot}[2]{
+	\subfigure[#2]{
+%            \label{fig:first}
+%			width=0.5\textwidth
+            \includegraphics[width=0.35\textwidth]{#1}
+           	}%
+}
+
+
+
+\begin{document}
+\maketitle
+
+\section*{Darba mērķi}
+
+\begin{itemize}
+
+
+	
+	\item teksts
+	
+	
+	\item tek
+\end{itemize}
+
+\section*{Darba uzdevumi}
+
+\section*{Darba piederumi}
+	
+\section*{Mērijumi un to apstrāde}
+
+\begin{table}[ht!]
+	\caption{Mana tabula}
+	\center
+	\small
+	\csvautotabular{build/dati.csv}
+\end{table}
+	
+
+	\begin{figure}[ht!] % Ātrumu sadalījums
+		\caption{Virsraksraksts}	
+		\center
+		
+			\subplot{build/.1graf.png}{1. grafiks}
+			\subplot{build/.2graf.png}{2. grafiks}\\	
+	\end{figure}
+	
+	\plot{build/.1graf.png}{Cits grafiks}
+	
+\clearpage
+\pagebreak
+
+\section*{Rezultāti}
+
+\section*{Secinājumi}
+
+
+\end{document}
+% =================================================== 

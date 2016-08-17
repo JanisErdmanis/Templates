@@ -1,0 +1,37 @@
+# If you want ipython to appear in a linux app launcher ("start menu"), install this by doing:
+# sudo desktop-file-install ipython-qtconsole.desktop
+
+[Desktop Entry]
+Comment=Enhanced interactive Python notebook
+Exec=ipython notebook --pylab=inline %f
+GenericName[en_US]=Python shell
+GenericName=Python shell
+Icon=ipython
+Name[en_US]=IPython notebook
+Name=IPython notebook
+Categories=Development;Utility;
+StartupNotify=false
+Terminal=false
+Type=Application
+Actions=pprint;visur;red;nulle;
+MimeType=text/ipython;
+
+#[Desktop Action Pylab]
+#Name=Pylab
+#Exec=ipython qtconsole --pylab
+
+[Desktop Action pprint]
+Name=pprint
+Exec=ipython notebook --pprint
+
+[Desktop Action visur]
+Name=Python visur
+Exec=ipython notebook --pylab=inline /home/akels/Dropbox/python_visur
+
+[Desktop Action red]
+Name=Python visur (rediģējamie)
+Exec=ipython notebook --pylab=inline /home/akels/Dropbox/python_visur/red
+
+[Desktop Action nulle]
+Name=Python 0 pozīcija
+Exec=ipython notebook --pylab=inline /home/akels/Dropbox/progr/Ipython_notebooks

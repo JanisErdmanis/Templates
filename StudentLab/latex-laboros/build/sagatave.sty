@@ -1,0 +1,105 @@
+% Preamble (technical stuff)
+% ===========================================
+\usepackage{fontspec}					% Latviešu valodas risinājums
+\usepackage{xunicode}
+
+\usepackage{float}	
+\usepackage{booktabs}           % Fancy tables
+
+\usepackage{csvsimple} % CSV failu iekļaušana
+
+\usepackage{afterpage}
+\setcounter{topnumber}{2}
+\setcounter{bottomnumber}{2}
+\setcounter{totalnumber}{4}
+\renewcommand{\topfraction}{0.85}
+\renewcommand{\bottomfraction}{0.85}
+\renewcommand{\textfraction}{0.15}
+\renewcommand{\floatpagefraction}{0.7}
+
+\usepackage{graphicx, subfigure}
+
+
+
+\setromanfont{DejaVu Serif}%Droid Serif %Liberation Serif %Liberation Mono
+
+%\input{./hlp/0_Latvian_XeLaTeX_preamble}            % Enables Latvian-related stuff
+%\input{./hlp/0_math_table}                          % Defines command for easier calculation examples
+\usepackage{graphicx}
+\usepackage{multirow}                               % Enables vertical column merging inside table environment
+                               
+\usepackage{amsmath}                                % Mathematical typsetting and some additional symbols
+\usepackage{nicefrac}                               % --"--
+\usepackage{units}                                  % --"--
+\usepackage{textcomp}                               % --"--
+\usepackage{siunitx}								% number formating
+
+
+\usepackage[top=1cm, bottom=1cm, left=2cm, right=2cm, includefoot]{geometry}
+
+\usepackage{titlesec}
+\titlespacing*{\section}{-0.5cm}{0.7cm}{0.2cm}      % "\section" dimensions, {left side}{top}{bottom}
+\titlespacing*{\subsection}{0cm}{0.3cm}{0.1cm}      % "\subsection" dimensions, {left side}{top}{bottom}
+\titlespacing*{\subsubsection}{0.5cm}{0.1cm}{0.0cm} % "\subsubsection" dimensions, {left side}{top}{bottom}
+
+\usepackage{mdwlist}                                % Use \begin{itemize*} and \begin{enumerate*} --- then the default double line spacing is omitted
+%\usepackage{multicol}                               % To use double columns for narrow enumarations ; use "\begin{multicols}{<column count>}"
+
+\usepackage{fancyhdr}                               % To get pagenumurss right ("n of m")
+\pagestyle{fancy}                                   % Pagestyle will be defined by fancyhdr commands
+\fancyhf{}                                          % Remove header and footer contents
+\renewcommand{\headrulewidth}{0pt}                  % Remove lines as well
+\usepackage{lastpage}                               % LaTeX now will know how many pages it have in the output
+\rfoot{\thepage\ no \pageref{LastPage}}             % Definition of the right footer "<#> of <total>"
+% ===================================================
+
+
+
+% Command definition (for easier input)
+% ===================================================
+%\newcommand{\e}[1]{\cdot 10^{#1}}                   % For easier scientific notation inside math environment
+%\newcommand{\celsium}[1]{$#1\,^{\circ}\mathrm{C}$}  % For easier temperature notation
+% ===================================================
+
+% Document definition
+% ===================================================
+\makeatletter
+
+\newcommand{\@id}{}
+\newcommand{\id}[1]{\renewcommand{\@id}{#1}}
+
+\newcommand{\@kurss}{}
+\newcommand{\kurss}[1]{\renewcommand{\@kurss}{#1}}
+
+\newcommand{\@numurs}{}
+\newcommand{\numurs}[1]{\renewcommand{\@numurs}{#1}}
+
+\renewcommand{\maketitle}{
+	\begin{flushright}
+		\begin{minipage}[c]{8cm}
+		\begin{flushright}
+		\begin{small}
+		Latvijas Universitāte\\
+		Fizikas un matemātikas fakultāte\\
+		\@kurss \\
+		\@author \  (\@id )\\
+		\today
+		\end{small}
+		\end{flushright}
+		\end{minipage}
+	\begin{minipage}[c]{3cm}
+		\includegraphics[height=2.7cm]{LU_logo.pdf} % Norādu absalūto vietu
+	\end{minipage}
+	\end{flushright}
+	\vspace{0.5cm}
+
+% Title
+% -----------
+\begin{center}
+	\begin{Large}
+		\textbf{Laboratorijas darbs Nr.~\@numurs}\\
+		\emph{\@title}
+	\end{Large}
+\end{center}
+% -----------	
+}

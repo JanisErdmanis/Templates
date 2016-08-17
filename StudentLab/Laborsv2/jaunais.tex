@@ -1,0 +1,550 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%     _______ _    _  _____       
+%    |__   __| |  | |/ ____|
+%       | |  | |__| | (___  
+%       | |  |  __  |\___ \ 
+%       | |  | |  | |____) |
+%       |_|  |_|  |_|_____/
+%
+%     _               ____  
+%    | |        /\   |  _ \ 
+%    | |       /  \  | |_) |
+%    | |      / /\ \ |  _ < 
+%    | |____ / ____ \| |_) |
+%    |______/_/    \_\____/ 
+%
+% _______ ______ __  __ _____  _            _______ ______ 
+%|__   __|  ____|  \/  |  __ \| |        /\|__   __|  ____|
+%   | |  | |__  | \  / | |__) | |       /  \  | |  | |__   
+%   | |  |  __| | |\/| |  ___/| |      / /\ \ | |  |  __|  
+%   | |  | |____| |  | | |    | |____ / ____ \| |  | |____ 
+%   |_|  |______|_|  |_|_|    |______/_/    \_\_|  |______|
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%% DONT CHANGE ANYTHING BEFORE THE "TITLE" SECTION.%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[a4paper]{article} % Don't change this
+% _____        _____ _  __          _____ ______  _____ 
+%|  __ \ /\   / ____| |/ /    /\   / ____|  ____|/ ____|
+%| |__) /  \ | |    | ' /    /  \ | |  __| |__  | (___  
+%|  ___/ /\ \| |    |  <    / /\ \| | |_ |  __|  \___ \ 
+%| |  / ____ \ |____| . \  / ____ \ |__| | |____ ____) |
+%|_| /_/    \_\_____|_|\_\/_/    \_\_____|______|_____/ 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\usepackage{longtable}                                        %%
+%\usepackage[english]{babel}
+%\usepackage[utf8]{inputenc}
+\usepackage{placeins}
+%%\usepackage[latin1]{inputenc}
+\usepackage{booktabs}
+
+%\usepackage{fontspec}
+\usepackage{fixlatvian}
+
+\usepackage[margin=1.5in]{geometry}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage[usenames,dvipsnames]{xcolor}
+\usepackage{graphicx}
+%\usepackage[siunitx]{circuitikz}
+\usepackage{tikz}
+%\usepackage[colorinlistoftodos, color=orange!50]{todonotes}
+\usepackage{hyperref}
+\usepackage[numbers, square]{natbib}
+\usepackage{fancybox}
+\usepackage{epsfig}
+%\usepackage{soul}
+\usepackage[framemethod=tikz]{mdframed}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%   _____ _    _  _____ _______ ____  __  __ 
+%  / ____| |  | |/ ____|__   __/ __ \|  \/  |
+% | |    | |  | | (___    | | | |  | | \  / |
+% | |    | |  | |\___ \   | | | |  | | |\/| |
+% | |____| |__| |____) |  | | | |__| | |  | |
+%  \_____|\____/|_____/   |_|  \____/|_|  |_|
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  _____ ____  __  __ __  __          _   _ _____   _____ 
+% / ____/ __ \|  \/  |  \/  |   /\   | \ | |  __ \ / ____|
+%| |   | |  | | \  / | \  / |  /  \  |  \| | |  | | (___  
+%| |   | |  | | |\/| | |\/| | / /\ \ | . ` | |  | |\___ \ 
+%| |___| |__| | |  | | |  | |/ ____ \| |\  | |__| |____) |
+% \_____\____/|_|  |_|_|  |_/_/    \_\_| \_|_____/|_____/ 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% SYNTAX FOR NEW COMMANDS:
+%\newcommand{\new}{Old command or text}
+
+% EXAMPLE:
+
+\newcommand{\blah}{blah blah blah \dots}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  _______ ______          _____ _    _ ______ _____  
+% |__   __|  ____|   /\   / ____| |  | |  ____|  __ \ 
+%    | |  | |__     /  \ | |    | |__| | |__  | |__) |
+%    | |  |  __|   / /\ \| |    |  __  |  __| |  _  / 
+%    | |  | |____ / ____ \ |____| |  | | |____| | \ \ 
+%    |_|  |______/_/    \_\_____|_|  |_|______|_|  \_\
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \english
+% \units 
+% \spelling 
+% \source 
+% \concept
+% \arbitrary{comment}{points}
+% \summary{General Comments}
+
+\setlength{\marginparwidth}{3.4cm}
+
+
+% NEW COUNTERS
+\newcounter{points}
+\setcounter{points}{100}
+\newcounter{spelling}
+\newcounter{english}
+\newcounter{units}
+\newcounter{other}
+\newcounter{source}
+\newcounter{concept}
+\newcounter{missing}
+\newcounter{math}
+\newcounter{terms}
+\newcounter{clarity}
+
+% COMMANDS
+%\newcommand{\raisa}[2]{\colorbox{Yellow}{#1} \todo{#2}}
+
+\newcommand{\clarity}[2]{\todo{CLARITY of WRITING(#1) #2}\addtocounter{points}{#1}
+\addtocounter{clarity}{#1}}
+
+\newcommand{\other}[2]{\todo{OTHER(#1) #2} \addtocounter{points}{#1} \addtocounter{other}{#1}}
+
+\newcommand{\spelling}{\todo{SPELLING (-1)} \addtocounter{points}{-1}
+\addtocounter{spelling}{-1}}
+\newcommand{\units}{\todo{UNITS (-1)} \addtocounter{points}{-1}
+\addtocounter{units}{-1}}
+
+\newcommand{\english}{\todo{SYNTAX and GRAMMAR (-1)} \addtocounter{points}{-1}
+\addtocounter{english}{-1}}
+
+\newcommand{\source}{\todo{SOURCE(S) (-2)} \addtocounter{points}{-2}
+\addtocounter{source}{-2}}
+\newcommand{\concept}{\todo{CONCEPT (-2)} \addtocounter{points}{-2}
+\addtocounter{concept}{-2}}
+
+\newcommand{\missing}[2]{\todo{MISSING CONTENT (#1) #2} \addtocounter{points}{#1}
+\addtocounter{missing}{#1}}
+
+\newcommand{\maths}{\todo{MATH (-1)} \addtocounter{points}{-1}
+\addtocounter{math}{-1}}
+\newcommand{\terms}{\todo{SCIENCE TERMS (-1)} \addtocounter{points}{-1}
+\addtocounter{terms}{-1}}
+
+
+\newcommand{\summary}[1]{
+\begin{mdframed}[nobreak=true]
+\begin{minipage}{\textwidth}
+\vspace{0.5cm}
+\begin{center}
+\Large{Grade Summary} \hrule 
+\end{center} \vspace{0.5cm}
+General Comments: #1
+
+\vspace{0.5cm}
+Possible Points \dotfill 100 \\
+Points Lost (Science Terms) \dotfill \theterms \\
+Points Lost (Syntax and Grammar) \dotfill \theenglish \\
+Points Lost (Spelling) \dotfill \thespelling \\
+Points Lost (Clarity of Writing) \dotfill \theclarity \\
+Points Lost (Units) \dotfill \theunits \\
+Points Lost (Math) \dotfill \themath \\
+Points Lost (Sources) \dotfill \thesource \\
+Points Lost (Concept) \dotfill \theconcept \\
+Points Lost (Missing Content) \dotfill \themissing \\
+Other \dotfill \theother \\[0.5cm]
+
+
+\begin{center}
+\large{\textbf{Grade:} \fbox{\thepoints}}
+\end{center}
+\end{minipage}
+\end{mdframed}}
+
+%#########################################################
+
+%To use symbols for footnotes
+\renewcommand*{\thefootnote}{\fnsymbol{footnote}}
+%To change footnotes back to numbers uncomment the following line
+%\renewcommand*{\thefootnote}{\arabic{footnote}}
+
+% Enable this command to adjust line spacing for inline math equations.
+% \everymath{\displaystyle}
+
+% _______ _____ _______ _      ______ 
+%|__   __|_   _|__   __| |    |  ____|
+%   | |    | |    | |  | |    | |__   
+%   | |    | |    | |  | |    |  __|  
+%   | |   _| |_   | |  | |____| |____ 
+%   |_|  |_____|  |_|  |______|______|
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\title{
+\normalfont \normalsize 
+\textsc{The Hudson School, Hoboken, New Jersey \\ 
+Course, Semester and Year} \\
+[10pt] 
+\rule{\linewidth}{0.5pt} \\[6pt] 
+\huge Sidrabes laboratorijas darbs āšīilj \\
+\rule{\linewidth}{2pt}  \\[10pt]
+}
+\author{Jānis Erdmanis}
+\date{\normalsize \today}
+
+\begin{document}
+
+\maketitle
+\noindent
+Date Performed \dotfill Oktobris \\
+Partners \dotfill Jānis Erdmanis, Arnis Katkevičs \\
+Instructor \dotfill Instructor's Name \\
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%             ______      ____  
+%            |  ____/\   / __ \ 
+%            | |__ /  \ | |  | |
+%            |  __/ /\ \| |  | |
+%            | | / ____ \ |__| |
+%            |_|/_/    \_\___\_\
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%
+% Ctrl + / to comment out a group of lines.
+%
+%
+% LIST MORE COMMON COMMMANDS
+% LIST USEFUL WEBSITES FOR TABLES, ETC
+% WHAT TO DO WHEN YOUR CODE WONT COMPILE
+% OVERLEAF SHORTCUTS
+%
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+% _               ____  
+%| |        /\   |  _ \ 
+%| |       /  \  | |_) |
+%| |      / /\ \ |  _ < 
+%| |____ / ____ \| |_) |
+%|______/_/    \_\____/ 
+%%%%%%%%%%%%%%%%%%%%%%%%
+%  _____ _______       _____ _______ _____ 
+% / ____|__   __|/\   |  __ \__   __/ ____|
+%| (___    | |  /  \  | |__) | | | | (___  
+% \___ \   | | / /\ \ |  _  /  | |  \___ \ 
+% ____) |  | |/ ____ \| | \ \  | |  ____) |
+%|_____/   |_/_/    \_\_|  \_\ |_| |_____/ 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% _    _ ______ _____  ______ 
+%| |  | |  ____|  __ \|  ____|
+%| |__| | |__  | |__) | |__   
+%|  __  |  __| |  _  /|  __|  
+%| |  | | |____| | \ \| |____ 
+%|_|  |_|______|_|  \_\______|
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Purpose}
+ 
+% Yada Yada Yada
+
+
+
+
+
+
+
+
+%#############################
+% _    ___     _______   ____         
+%| |  | \ \   / /  __ \ / __ \        
+%| |__| |\ \_/ /| |__) | |  | |______ 
+%|  __  | \   / |  ___/| |  | |______|
+%| |  | |  | |  | |    | |__| |       
+%|_|  |_|  |_|  |_|     \____/  
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% _______ _    _ ______  _____ _____  _____ 
+%|__   __| |  | |  ____|/ ____|_   _|/ ____|
+%   | |  | |__| | |__  | (___   | | | (___  
+%   | |  |  __  |  __|  \___ \  | |  \___ \ 
+%   | |  | |  | | |____ ____) |_| |_ ____) |
+%   |_|  |_|  |_|______|_____/|_____|_____/ 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Hypothesis}
+
+
+
+
+
+%\cite{reference_number} in order to cite a source 
+%##########################################
+
+% __  __       _______ ______ _____  _____          _       _____ 
+%|  \/  |   /\|__   __|  ____|  __ \|_   _|   /\   | |     / ____|
+%| \  / |  /  \  | |  | |__  | |__) | | |    /  \  | |    | (___  
+%| |\/| | / /\ \ | |  |  __| |  _  /  | |   / /\ \ | |     \___ \ 
+%| |  | |/ ____ \| |  | |____| | \ \ _| |_ / ____ \| |____ ____) |
+%|_|  |_/_/    \_\_|  |______|_|  \_\_____/_/    \_\______|_____/ 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section {Materials}
+
+% Materials go here
+
+
+%%%%%%%%%%%%%%%%%%%%%%%
+% FOR A NUMBERED LIST
+% \begin{enumerate}
+% \item Your_Item
+% \end{enumerate}
+%%%%%%%%%%%%%%%%%%%%%%%
+% FOR A BULLETED LIST
+% \begin{itemize}
+% \item Your_Item
+% \end{itemize}
+%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+
+
+
+
+%#################################################################
+% _____  _____   ____   _____ ______ _____  _    _ _____  ______ 
+%|  __ \|  __ \ / __ \ / ____|  ____|  __ \| |  | |  __ \|  ____|
+%| |__) | |__) | |  | | |    | |__  | |  | | |  | | |__) | |__   
+%|  ___/|  _  /| |  | | |    |  __| | |  | | |  | |  _  /|  __|  
+%| |    | | \ \| |__| | |____| |____| |__| | |__| | | \ \| |____ 
+%|_|    |_|  \_\\____/ \_____|______|_____/ \____/|_|  \_\______|
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section {Procedure}
+%%%%%%%%%%%%%%%%%%%%%%%
+% FOR A NUMBERED LIST
+% \begin{enumerate}
+% \item Your_Item
+% \end{enumerate}
+%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+
+
+
+
+
+%##################################################################
+
+% _____       _______       
+%|  __ \   /\|__   __|/\    
+%| |  | | /  \  | |  /  \   
+%| |  | |/ /\ \ | | / /\ \  
+%| |__| / ____ \| |/ ____ \ 
+%|_____/_/    \_\_/_/    \_\
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section {Data}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% TO IMPORT AN IMAGE
+% UPLOAD IT FIRST (HIT THE PROJECT BUTTON TO SHOW FILES)
+% KEEP THE NAME SHORT WITH NO SPACES!
+% TYPE THE FOLLOWING WITH THE NAME OF YOUR FILE
+% DON'T INCLUDE THE FILE EXTENSION
+% \includegraphics[width=\textwidth]{name_of_file}
+% \textwidth makes the picture the width of the paragraphs
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% TO CREATE A FIGURE WITH A NUMBER AND CAPTION
+% \begin{figure}
+% \includegraphics[width=\textwidth]{image}
+% \caption{Your Caption Goes Here}
+% \label{your_label}
+% \end{figure}
+% REFER TO YOUR FIGURE LATER WITH
+% \ref{your_label}
+% LABELS NEED TO BE ONE WORD
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+
+
+
+
+
+
+%#############################
+
+% _____ _____  _____  _____ _    _  _____ _____ 
+%|  __ \_   _|/ ____|/ ____| |  | |/ ____/ ____|
+%| |  | || | | (___ | |    | |  | | (___| (___  
+%| |  | || |  \___ \| |    | |  | |\___ \\___ \ 
+%| |__| || |_ ____) | |____| |__| |____) |___) |
+%|_____/_____|_____/ \_____|\____/|_____/_____/ 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section {Discussion}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+
+
+
+
+\subsection{Definitions}
+% Include your sources!
+%%%%%%%%%%%%%%%%%%%%%%%
+% LIST OF DEFINITIONS
+% \begin{description}
+% \item [WORD] {Definition}
+% \end{description}
+%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+
+
+\subsection{Results}
+% State your main discovery based on the experimental data.
+
+
+
+
+
+
+\subsection{Questions}
+% Write full question and format answers in ITALIC
+% CTRL + I for ITALIC
+
+
+
+
+
+
+
+\subsection{Critique}
+% Discuss precision of measurements and instruments.
+% Suggest improvements for future labs.
+
+
+
+
+
+
+
+%###############################################
+%  _____ ____  _   _  _____ _     _    _ _____  ______ 
+% / ____/ __ \| \ | |/ ____| |   | |  | |  __ \|  ____|
+%| |   | |  | |  \| | |    | |   | |  | | |  | | |__   
+%| |   | |  | | . ` | |    | |   | |  | | |  | |  __|  
+%| |___| |__| | |\  | |____| |___| |__| | |__| | |____ 
+% \_____\____/|_| \_|\_____|______\____/|_____/|______|
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Conclusion}
+%#######################################################
+
+
+
+
+
+
+
+
+
+%  _____  ____  _    _ _____   _____ ______  _____ 
+% / ____|/ __ \| |  | |  __ \ / ____|  ____|/ ____|
+%| (___ | |  | | |  | | |__) | |    | |__  | (___  
+% \___ \| |  | | |  | |  _  /| |    |  __|  \___ \ 
+% ____) | |__| | |__| | | \ \| |____| |____ ____) |
+%|_____/ \____/ \____/|_|  \_\\_____|______|_____/ 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+% USE NOCITE TO ADD SOURCES TO THE BIBLIOGRAPHY WITHOUT SPECIFICALLY CITING THEM IN THE DOCUMENT
+
+%\nocite{ref_num}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+            % BIBLIOGRAPHY: %
+
+% Make sure your class *.bib file is uploaded to this project by clicking the project button > add files. Change 'sample' below to the name of your file without the .bib extension.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\bibliographystyle{plainnat}
+%\bibliography{sample}
+
+% UNCOMMENT THE TWO LINES ABOVE TO ENABLE BIBLIOGRAPHY
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{thebibliography}{5}
+
+    %Each item starts with a \bibitem{reference} command and the details thereafter.
+    \bibitem{HOP96} % Transaction paper
+    J.~Hagenauer, E.~Offer, and L.~Papke. Iterative decoding of binary block
+    and convolutional codes. {\em IEEE Trans. Inform. Theory},
+    vol.~42, no.~2, pp.~429–-445, Mar. 1996.
+
+    \bibitem{MJH06} % Conference paper
+    T.~Mayer, H.~Jenkac, and J.~Hagenauer. Turbo base-station cooperation for intercell interference cancellation. {\em IEEE Int. Conf. Commun. (ICC)}, Istanbul, Turkey, pp.~356--361, June 2006.
+
+    \bibitem{Proakis} % Book
+    J.~G.~Proakis. {\em Digital Communications}. McGraw-Hill Book Co.,
+    New York, USA, 3rd edition, 1995.
+
+    \bibitem{talk} % Web document
+    F.~R.~Kschischang. Giving a talk: Guidelines for the Preparation and Presentation of Technical Seminars.
+    \url{http://www.comm.toronto.edu/frank/guide/guide.pdf}.
+
+    \bibitem{5}
+    IEEE Transactions \LaTeX and Microsoft Word Style Files.
+    \url{http://www.ieee.org/web/publications/authors/transjnl/index.html}
+
+\end{thebibliography}
+
+\end{document} % NOTHING AFTER THIS LINE IS PART OF THE DOCUMENT
+ ______ ______ ______ ______ ______ ______ ______ 
+|______|______|______|______|______|______|______|
+                  _____  ____  
+                 / ____|/ __ \ 
+                | |  __  |  | |
+                | | |_ | |  | |
+                | |__| | |__| |
+                 \_____|\____/ 
+ 
+ _    _  ____  _____  _   _ ______ _______ _____ _ 
+| |  | |/ __ \|  __ \| \ | |  ____|__   __/ ____| |
+| |__| | |  | | |__) |  \| | |__     | | | (___ | |
+|  __  | |  | |  _  /| . ` |  __|    | |  \___ \| |
+| |  | | |__| | | \ \| |\  | |____   | |  ____) |_|
+|_|  |_|\____/|_|  \_\_| \_|______|  |_| |_____/(_)
+
+ ______ ______ ______ ______ ______ ______ ______ 
+|______|______|______|______|______|______|______|
+              
+            

@@ -1,0 +1,23 @@
+# -*- coding: utf8 -*-
+import imp
+builders = imp.load_source('env', 'Builders.py')
+env = builders.env
+
+Source = 'README.md'
+
+#The methods for compiling
+konsp = env.konsp('Konspekts',Source)
+html = env.html('Html',Source) 
+
+#The method what will be used by default
+lab = env.lab('Labors',Source)
+other_files = ['SConstruct'] + Glob('*.dat')
+Depends(lab,other_files)
+
+letter = env.letter('Vēstule','index.md')
+
+pdfOutput = env.PDF('build/builded.pdf',['hello-world.tex'],) 
+Depends(builders.latex_cleaner,pdfOutput)
+
+#What will be made 
+Default(lab)

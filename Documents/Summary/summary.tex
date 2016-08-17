@@ -1,0 +1,83 @@
+\documentclass[tightenline,notitlepage,nofootinbib]{revtex4-1}
+
+\bibliographystyle{plainnat}
+%\DeclareOption{nofootinbib}{\@booleanfalse\footinbib@sw}
+
+%\@booleanfalse\footinbib@sw
+
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{subcaption}
+\usepackage{sidecap}
+\usepackage{empheq}
+
+
+\DeclareMathOperator{\erf}{Erf}
+\DeclareMathOperator{\trace}{Tr}
+
+\newcommand{\spinup}{\uparrow}
+\newcommand{\spindown}{\downarrow}
+\newcommand{\KSAE}{{I}}
+\newcommand{\qav}[1]{\langle {#1} \rangle}
+\newcommand*{\ket}[1]{\left \lvert {#1} \right \rangle}
+\newcommand*{\bra}[1]{\left \langle {#1} \right \rvert}
+\newcommand{\comm}[1]{{ \textbf{#1} }}
+
+
+
+\begin{document}
+  \title{Check on nummerical solution.}
+  \author{Janis Erdmanis \\ akels14@gmail.com}
+%  \email{akels14@gmail.com}
+  \date{September 2014}
+  \maketitle
+
+\begin{abstract}
+Your abstract goes here...
+...
+\end{abstract}
+  
+
+A lot of text A lot of text A lot of text A lot of text A lot of text A lot of text A lot of text A lot of text A lot of text A lot of text A lot of text A lot of text A lot of text A lot of text A lot of text A lot of text A lot of text A lot of text A lot of text A lot of text A lot of text A lot of text A lot of text A lot of text A lot of text A lot of text A lot of text A lot of text A lot of text A lot of text A lot of text A lot of text A lot of text A lot of text A lot of text A lot of text A lot of text A lot of text A lot of text A lot of text A lot of text A lot of text A lot of text A lot of text A lot of text A lot of text A lot of text A lot of text 
+
+     
+     
+     
+%     \begin{SCfigure}[][p]
+%       	 \includegraphics[width=0.6\textwidth]{./Plots/Dispersion_packet_plot}  \caption{The spread of wave packet as function of speed at which energy in quantum dot is raised.}
+%     	\label{fig:spread}
+%     \end{SCfigure}
+  
+  
+%  \begin{figure}[p]
+%  	\begin{subfigure}[b]{0.45\textwidth}
+%  	\includegraphics[width=1.1\textwidth]{Plots/Convergence_discreditation.pdf}
+%  	\end{subfigure} ~
+%  	\begin{subfigure}[b]{0.45\textwidth}
+%  	  	\includegraphics[width=1.1\textwidth]{Plots/Convergence_localisation.pdf}
+%  	  	\end{subfigure} 
+%  	\\
+%  	  	\begin{subfigure}[b]{0.45\textwidth}
+%  	  	\includegraphics[width=1.1\textwidth]{Plots/Convergence_energy_discreditation.pdf}
+%  	  	\end{subfigure}
+%  	  	~
+%  	    	\begin{subfigure}[b]{0.45\textwidth}
+%  	    	\includegraphics[width=1.1\textwidth]{Plots/Convergence_energy_localisation.pdf}
+%  	    	\end{subfigure}
+%  	\caption{At the top we see direct comparison with time probability distribution obtained from Wigner function with parameters $A_\Gamma=2$, $\tau/\tau_0=2$ numerically by applying property \eqref{asymptotics:time_prob} and also analytically  from kinetic equation \eqref{kinetic} which was taken from \cite{Arnis}. It shows fast convergence as spacing of $T$ becomes smaller than $2 \tau_0/\tau$ at numerical evaluation of integral \eqref{harmonic:Wigner_bar} with trapezoidal rule. The asumption of localisation for integration variable $T$ however does not show signs in time probability distribution (as expected), while in energy probability distribution we see that localisation parameter $a$ must be choosen with respect to normalization $P_{Norm} = \int_{- a/2}^{+a/2} p_t(t) dt$.}
+%  	\label{fig:convergence}
+%  \end{figure}
+  
+  
+  % ---Bibliography --- 
+  \clearpage
+  \bibliography{bibliography}{}
+%  \bibliographystyle{plain}
+  
+  
+  \end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:

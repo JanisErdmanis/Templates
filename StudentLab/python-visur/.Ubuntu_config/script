@@ -1,0 +1,7 @@
+#!/bin/bash
+sudo apt-get update;
+sudo apt-get -y install python-scipy python-pandas python-sympy ipython-notebook ipython-qtconsole;
+sudo cp ipython-qtconsole.desktop /usr/share/applications;
+sudo cp ipython-notebook.desktop /usr/share/applications;
+sudo cp mime.xml /usr/share/mime/packages;
+sudo update-mime-database /usr/share/mime;

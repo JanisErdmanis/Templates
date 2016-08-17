@@ -1,0 +1,73 @@
+% Recepte, lai labi izvietotu figūras
+\usepackage{float}	
+\usepackage{afterpage}
+\setcounter{topnumber}{2}
+\setcounter{bottomnumber}{2}
+\setcounter{totalnumber}{4}
+\renewcommand{\topfraction}{0.85}
+\renewcommand{\bottomfraction}{0.85}
+\renewcommand{\textfraction}{0.15}
+\renewcommand{\floatpagefraction}{0.7}
+
+% Paragrāfu noformējums
+\setlength{\parindent}{1cm}
+
+
+% Ērtai grafiku veidošanai:
+\usepackage{subfigure}
+
+\newcommand{\plot}[2]{ % Bez šī varētu iztikt, ja nebūtu vajadzīgs caption virs grafika
+	\begin{figure}[!ht]
+		\caption{#2}
+		\center
+		\includegraphics{#1}
+	\end{figure}
+}
+
+\newcommand{\subplot}[2]{ % Komandas pielietojumu skatīt datormodelēšanas darbos
+	\subfigure[#2]{
+            \includegraphics[width=0.35\textwidth]{#1}
+           	}
+}
+ 
+
+\usepackage{csvsimple}
+\renewcommand{\includegraphics}[1]{\Oldincludegraphics[width=0.7\maxwidth]{#1}}
+\makeatletter
+
+\renewcommand{\maketitle}{
+	\begin{flushright}
+		\begin{minipage}[c]{8cm}
+		\begin{flushright}
+		\begin{small}
+			Latvijas Universitāte\\
+			Fizikas un matemātikas fakultāte\\
+			Fizikas Bakaluara 2. kurss \\
+			\@author \\
+			\today %\@date
+		\end{small}
+		\end{flushright}
+		\end{minipage}
+	\begin{minipage}[c]{3cm}
+		\Oldincludegraphics[height=2.7cm]{build_markdown/LU_logo.pdf} % Norādu absalūto vietu
+	\end{minipage}
+	\end{flushright}
+	\vspace{0.5cm}
+
+% Title
+% -----------
+\begin{center}
+	\begin{Large}
+		\textbf{Laboratorijas darbs}\\
+		\emph{\@title}
+	\end{Large}
+\end{center}
+% -----------	
+}
+
+\usepackage{fancyhdr}                               % To get pagenumurss right ("n of m")
+\pagestyle{fancy}                                   % Pagestyle will be defined by fancyhdr commands
+\fancyhf{}                                          % Remove header and footer contents
+\renewcommand{\headrulewidth}{0pt}                  % Remove lines as well
+\usepackage{lastpage}                               % LaTeX now will know how many pages it have in the output
+\rfoot{\thepage\ no \pageref{LastPage}}             % Definition of the right footer "<#> of <total>"
